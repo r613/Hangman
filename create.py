@@ -5,3 +5,9 @@ def create():
     for word in text.split(" "):
             final_t.append(word)
     return final_t
+
+def creator(text):
+    final_t = []
+    for word in text.split(" "):
+        final_t.append(word)
+    return final_t

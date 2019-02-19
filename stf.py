@@ -15,6 +15,14 @@ def Game_on(words,letters,chances): #one round, in game
         text +=  final_w
         text += " "
     return text
+def exists(words,letters,letter):
+    for word in words:
+        for l in word:
+            if l == letter:
+                return True
+            else:
+                pass
+    return False  
 def check(text):
     for l in text:
         
