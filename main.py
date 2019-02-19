@@ -1,30 +1,49 @@
-#Starting the program 13/2/19 4:30 (GMT) or 5:30
+from create import create
+from stf import Game_on
+from stf import check
 
-## this is halarious! no one will ever be reading this!!!
+word = "Stuff"
 
-"""
-from chaimson import dictionary 
-from chaimson import generate_word
-def menu():
-    game_on = True 
-    words = generate()
-    while game_on:
+def get_l(letters):
+        letter = raw_input("Guess one letter: ")
+        if len(letter) !=1:
+                print "One letter only!"
+                return get_l(letters)
+        for l in letters:
+                if l == letter:
+                        print "Your already entered that letter, try again! "
+                        return get_l(letters)
+                else:
+                        pass
+        return letter
+
+def Menu():
+        text = create()
         
-        around(words,letters)
-"""
-def menu():
-        game_on = True
-        words = "Ruby Awesome!"
-        n_rounds = 0
-        attempts_left = 6
-        letters = []
+        letters = " "
+        tries = 0
 
-        while game_on:
-                n_rounds += 1
-                letter = around(words,letters)
-                letters.append(letter)
-                result()
+        gaming = True 
+        while gaming:
+                print "\n\n\n"
+                #print the words/empty spaces
+                print Game_on(text,letters,tries)
+                #number of tries +1
+                tries += 1
+                letters += get_l(letters)
+                #print number of tries
+                print "Tries: " + str(tries)
+                # If user ran out of tries, game ends
+                
+                #if text is full, game ends
+                gaming = check(Game_on(text,letters,tries)) #check(...) returns False if the text is found
+                if tries > 15:
+                        print "you ran out of tries"
+                        gaming = False 
+        print "All done, "
+        print check(Game_on(text,letters,tries))
 
-def around(words,letters): #this function starts one round 
 
-def result(): #this function prints the result of the past round 
+                
+    
+Menu()
